@@ -2,6 +2,10 @@
 	box-sizing: border-box;
 	margin: 0;
 }
+:root {
+	--shadow: 20px;
+	--object: 125px;
+}
 body {
 	margin: 0;
 	overflow: hidden;
@@ -14,12 +18,24 @@ body {
 	position: relative;
 }
 .object {
-	width: 100px;
-	height: 100px;
-	box-shadow: -20px -20px black;
+	width: var(--object);
+	height: var(--object);
 	background-color: yellow;
 	position: absolute;
 }
+.object.left {
+	box-shadow: calc(var(--shadow) * -1) calc(var(--shadow) * -1) black;
+}
+.object.right {
+	box-shadow: var(--shadow) var(--shadow) black;
+}
+.object.bottom {
+	box-shadow: calc(var(--shadow) * -1) var(--shadow) black;
+}
+.object.top {
+	box-shadow: var(--shadow) calc(var(--shadow) * -1) black;
+}
+
 .placeholder {
 	position: absolute;
 	top: 0;
@@ -31,5 +47,8 @@ body {
 	justify-content: center;
 }
 h1 {
-	color: black;
+	font-size: 100px;
+}
+h1::selection {
+	background-color: skyblue;
 }
