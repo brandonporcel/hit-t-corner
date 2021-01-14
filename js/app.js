@@ -14,37 +14,58 @@ const addShadow = (side) => {
 	$ball.classList.remove('bottom');
 	$ball.classList.add(side);
 };
+const styles = [
+	{
+		background: 'pink',
+		object: 'violet',
+	},
+	{
+		background: 'ghostwhite',
+		object: 'white',
+	},
+	{
+		background: 'yellow',
+		object: 'pink',
+	},
+	{
+		background: 'violet',
+		object: 'yellow',
+	},
+];
+let randomNumber;
+const getStyle = () => {
+	randomNumber = Math.floor(Math.random() * styles.length);
+};
+const changeStyles = () => {
+	getStyle();
+	$map.style.backgroundColor = styles[randomNumber].background;
+	$ball.style.backgroundColor = styles[randomNumber].object;
+};
 setInterval(() => {
-	// 270 "yyy"
-	// -5 "yyy"
-	// 570 "xxxx"
-	// 270 "yyy"
-	// -5 "yyy"
-	// -5 "xxxx"
-	// 270 "yyy"
-	// -5 "yyy"
-	// 570 "xxxx"
 	// se va 1px,por eso el >=
 	if (posX + $ball.clientWidth >= $map.clientWidth) {
 		speedX = -speedX;
 		addShadow('right');
+		changeStyles();
 	}
 	// cuando toca el borde izquierda
 	// son 570(el mapa mide 600,el coso 30px) derecha, -5(no entiendo por qué) izquierda
 	if (posX <= -1) {
 		speedX = -speedX;
 		addShadow('left');
+		changeStyles();
 	}
-
 	if (posY + $ball.clientHeight === $map.clientHeight) {
 		speedY = -speedY;
 		addShadow('bottom');
+		changeStyles();
 	}
 	// cuando toca el borde de arriba
 	// son 270 abajo, -5(no entiendo por qué) arriba
 	if (posY <= -1) {
 		speedY = -speedY;
 		addShadow('top');
+		changeStyles();
 	}
 
 	posX += speedX;
