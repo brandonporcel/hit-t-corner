@@ -20,8 +20,9 @@ body {
 .object {
 	width: var(--object);
 	height: var(--object);
-	background-color: yellow;
 	position: absolute;
+	background-image: url('../img/hand.gif');
+	background-size: 100%;
 }
 .object.left {
 	box-shadow: calc(var(--shadow) * -1) calc(var(--shadow) * -1) black;
@@ -49,6 +50,11 @@ body {
 h1 {
 	font-size: 100px;
 }
-h1::selection {
+h1::selection,
+span::selection {
 	background-color: skyblue;
+}
+span {
+	font-size: 55px;
+	position: absolute;
 }

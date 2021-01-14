@@ -1,7 +1,9 @@
 const d = document;
 const $map = d.querySelector('.map');
 const $ball = d.querySelector('.object');
-const FPS = 50;
+// este si podes cambiar
+const FPS = 70;
+// no cambiar
 let posX = 0;
 let posY = 0;
 let speedX = 5;
@@ -50,7 +52,7 @@ setInterval(() => {
 	}
 	// cuando toca el borde izquierda
 	// son 570(el mapa mide 600,el coso 30px) derecha, -5(no entiendo por qué) izquierda
-	if (posX <= -1) {
+	else if (posX <= -1) {
 		speedX = -speedX;
 		addShadow('left');
 		changeStyles();
@@ -62,7 +64,7 @@ setInterval(() => {
 	}
 	// cuando toca el borde de arriba
 	// son 270 abajo, -5(no entiendo por qué) arriba
-	if (posY <= -1) {
+	else if (posY <= -1) {
 		speedY = -speedY;
 		addShadow('top');
 		changeStyles();
